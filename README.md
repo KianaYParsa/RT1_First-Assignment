@@ -57,9 +57,10 @@ Each functionality is encapsulated in a dedicated node to ensure modularity, sca
 ## 4. Safety Strategy
 The safety logic is fully handled by the `distance_node` and is based on the following rules:
 
-- If the distance between the two turtles becomes smaller than a predefined threshold, both turtles are immediately stopped.
-- If a turtle approaches the boundaries of the simulation workspace, its velocity is set to zero.
+- If the distance between the two turtles becomes smaller than a predefined threshold, the **moving turtle** is stopped (if both turtles are moving, both are stopped).
+- If a turtle approaches the boundaries of the simulation workspace, the **moving turtle** close to the boundary is stopped.
 - The distance between the turtles is continuously published for monitoring and debugging purposes.
+- Safety constraints are enforced continuously, preventing user commands from overriding safety conditions.
 
 This design ensures that safety constraints are enforced independently of user input.
 
